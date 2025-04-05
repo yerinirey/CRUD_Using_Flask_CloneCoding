@@ -48,6 +48,22 @@ def delete(id_data):
     conn.commit()
     return redirect(url_for('Index'))
 
+@app.route('/update', methods = ['POST', 'GET'])
+def update():
+    if request.method == 'POST':
+        id_data = request.form['id']
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+
+        curs = conn.cursor()
+        curs.execute('''
+        UPDATE students SET name=%s, email=%s, phone=%s
+        WHERE id=%s
+        ''', (name, email, phone, id_data))
+        flash("Data Updated Successfully")
+        return redirect(url_for('Index'))
+
 
 if __name__ == "__main__":
     app.run(debug = True)

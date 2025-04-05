@@ -72,8 +72,8 @@
         </div>
       </div>
     </div>
-
     <!-- End of Enter New Student Modal -->
+
     <div class="container-fluid">
       <h1 class="text-center alert alert-danger">
         Python Flask CRUD Application
@@ -130,7 +130,7 @@
                     href=""
                     class="btn btn-warning btn-sm"
                     data-toggle="modal"
-                    data-target=""
+                    data-target="#editModal{{row.0}}"
                     >Edit</a
                   ><a
                     href="/delete/{{ row.0 }}"
@@ -140,7 +140,62 @@
                   >
                 </td>
               </tr>
+              <!-- Edit Student Modal -->
+              <div id="editModal{{row.0}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Please Update Student Info</h4>
+                      <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
 
+                    <div class="modal-body">
+                      <form action="{{ url_for('update')}}" method="post">
+                        <input type="hidden" name="id" value="{{row.0}}" />
+                        <div class="form-group">
+                          <label>Name</label>
+                          <input
+                            value="{{row.1}}"
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="Enter Full Name"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input
+                            value="{{row.2}}"
+                            type="text"
+                            name="email"
+                            class="form-control"
+                            id="exampleFormControlInput2"
+                            placeholder="Enter Email"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Phone Number</label>
+                          <input
+                            value="{{row.3}}"
+                            type="text"
+                            name="phone"
+                            class="form-control"
+                            id="exampleFormControlInput3"
+                            placeholder="Enter Phone Number"
+                          />
+                        </div>
+                        <button type="submit" class="btn btn-success mb-2">
+                          Update
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Edit Student Modal -->
               {% endfor %}
             </tbody>
           </table>
