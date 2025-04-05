@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, flash
+from flask import Flask, render_template, request, url_for, flash, redirect
 # from flask_mysqldb import MySQL
 # from flask_sqlalchemy import SQLAlchemy
 import pymysql
@@ -26,6 +26,19 @@ def Index():
     curs.close()
     
     return render_template('index.html', students = data)
+
+@app.route('/insert', methods = ['POST'])
+def insert():
+    if request.method == 'POST':
+        flash('Data Inserted Successfully')
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+
+        curs = conn.cursor()
+        curs.execute("INSERT INTO students (name, email, phone) VALUES (%s, %s, %s)", (name, email, phone))
+        conn.commit()
+        return redirect(url_for('Index'))
 
 if __name__ == "__main__":
     app.run(debug = True)
