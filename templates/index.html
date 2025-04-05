@@ -15,8 +15,65 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <!-- Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <!-- Enter New Student Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-primary">Please Add New Student</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Full Name"
+                />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Email"
+                />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Phone Number"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Enter New Student Modal -->
     <div class="container-fluid">
       <h1 class="text-center alert alert-danger">
         Python Flask CRUD Application
@@ -84,6 +141,7 @@
                   >
                 </td>
               </tr>
+
               {% endfor %}
             </tbody>
           </table>
@@ -92,5 +150,26 @@
         <div class="col-sm-2"></div>
       </div>
     </div>
+    <!-- Scripts ... migrate to upper version later -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
